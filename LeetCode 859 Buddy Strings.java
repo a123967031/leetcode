@@ -4,12 +4,19 @@ class Solution {
     	if(A.equals(B)){
     		return A.matches(".*(.).*\\1.*");
     	}else{
+    		int first = 0;
+    		int second = 0;
     		for(int i=0;i<A.length();i++){
-        		for(int j=0;j<B.length();j++){
-        		Char chA = A.charAt(i);
-        		Char chB = B.charAt(j);
-        		}
-        	}
+    			if(A.charAt(i) != B.charAt(i)){
+    				if(first==0)
+    					first = i;
+    				else if(second==0)
+    					second = i;
+    				else
+    					return false;
+    			}
+    		}
+    	return (second!=0 && A.charAt(first)==B.charAt(second) && A.charAt(second)==B.charAt(first));
     	}
     }
 }
